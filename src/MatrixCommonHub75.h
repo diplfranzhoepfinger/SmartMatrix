@@ -164,6 +164,7 @@
 #define SM_HUB75_OPTIONS_ESP32_CALC_TASK_CORE_1     (1 << 5)
 #define SM_HUB75_OPTIONS_FM6126A_RESET_AT_START     (1 << 6)
 #define SM_HUB75_OPTIONS_T4_CLK_PIN_ALT             (1 << 7)
+#define SM_HUB75_OPTIONS_INVERT_R1                  (1 << 8)
 
 // old naming convention kept for compatibility
 #define SMARTMATRIX_OPTIONS_NONE                    SM_HUB75_OPTIONS_NONE                   
@@ -175,6 +176,7 @@
 #define SMARTMATRIX_OPTIONS_ESP32_CALC_TASK_CORE_1  SM_HUB75_OPTIONS_ESP32_CALC_TASK_CORE_1 
 #define SMARTMATRIX_OPTIONS_FM6126A_RESET_AT_START  SM_HUB75_OPTIONS_FM6126A_RESET_AT_START 
 #define SMARTMATRIX_OPTIONS_T4_CLK_PIN_ALT          SM_HUB75_OPTIONS_T4_CLK_PIN_ALT         
+#define SMARTMATRIX_OPTIONS_INVERT_R1               SM_HUB75_OPTIONS_INVERT_R1
 
 
 // defines data bit order from bit 0-7, four times to fit in uint32_t

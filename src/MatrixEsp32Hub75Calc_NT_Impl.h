@@ -644,7 +644,16 @@ INLINE void SmartMatrixHub75Calc_NT<dummyvar>::loadMatrixBuffers48(MATRIX_DATA_S
                         } else {
                             v |= BIT_R1;
                         }
-                    }               
+                    }
+                    if(optionFlags & SMARTMATRIX_OPTIONS_INVERT_R1) {
+                        // R1 format inverts the data (assume we're only using R1 for now), and OE signals
+
+                        if(v & BIT_R1) {
+                            v = v & ~(BIT_R1);
+                        } else {
+                            v |= BIT_R1;
+                        }
+                    }
 #else
                     v|=BIT_G1;
 #endif
@@ -938,7 +947,17 @@ INLINE void SmartMatrixHub75Calc_NT<dummyvar>::loadMatrixBuffers24(MATRIX_DATA_S
                         } else {
                             v |= BIT_R1;
                         }
-                    }               
+                    }
+
+                    if(optionFlags & SMARTMATRIX_OPTIONS_INVERT_R1) {
+                        // R1 format inverts the data (assume we're only using R1 for now), and OE signals
+
+                        if(v & BIT_R1) {
+                            v = v & ~(BIT_R1);
+                        } else {
+                            v |= BIT_R1;
+                        }
+                    }
 
                     if((optionFlags & SMARTMATRIX_OPTIONS_C_SHAPE_STACKING) && !((i/matrixWidth)%2)) {
                         //currentRowDataPtr->rowbits[j].data[(((i+matrixWidth-1)-k)*DMA_UPDATES_PER_CLOCK)] = o0.word;
