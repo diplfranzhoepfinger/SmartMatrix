@@ -645,7 +645,8 @@ INLINE void SmartMatrixHub75Calc_NT<dummyvar>::loadMatrixBuffers48(MATRIX_DATA_S
                             v |= BIT_R1;
                         }
                     }
-                    if(optionFlags & SMARTMATRIX_OPTIONS_INVERT_R1) {
+
+                    if(optionFlags & SMARTMATRIX_OPTIONS_INVERT_R1R2) {
                         // R1 format inverts the data (assume we're only using R1 for now), and OE signals
 
                         if(v & BIT_R1) {
@@ -653,6 +654,12 @@ INLINE void SmartMatrixHub75Calc_NT<dummyvar>::loadMatrixBuffers48(MATRIX_DATA_S
                         } else {
                             v |= BIT_R1;
                         }
+                        if(v & BIT_R2) {
+                            v = v & ~(BIT_R2);
+                        } else {
+                            v |= BIT_R2;
+                        }
+
                     }
 #else
                     v|=BIT_G1;
@@ -949,7 +956,7 @@ INLINE void SmartMatrixHub75Calc_NT<dummyvar>::loadMatrixBuffers24(MATRIX_DATA_S
                         }
                     }
 
-                    if(optionFlags & SMARTMATRIX_OPTIONS_INVERT_R1) {
+                    if(optionFlags & SMARTMATRIX_OPTIONS_INVERT_R1R2) {
                         // R1 format inverts the data (assume we're only using R1 for now), and OE signals
 
                         if(v & BIT_R1) {
@@ -957,6 +964,12 @@ INLINE void SmartMatrixHub75Calc_NT<dummyvar>::loadMatrixBuffers24(MATRIX_DATA_S
                         } else {
                             v |= BIT_R1;
                         }
+                        if(v & BIT_R2) {
+                            v = v & ~(BIT_R2);
+                        } else {
+                            v |= BIT_R2;
+                        }
+
                     }
 
                     if((optionFlags & SMARTMATRIX_OPTIONS_C_SHAPE_STACKING) && !((i/matrixWidth)%2)) {
