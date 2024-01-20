@@ -251,9 +251,9 @@
     #define R1_PIN  GPIO_NUM_2
     #define G1_PIN  GPIO_NUM_15
     #define B1_PIN  GPIO_NUM_4
-    #define R2_PIN  GPIO_NUM_16
+    #define R2_PIN  GPIO_NUM_32
     #define G2_PIN  GPIO_NUM_27
-    #define B2_PIN  GPIO_NUM_17
+    #define B2_PIN  GPIO_NUM_33
 
     #define A_PIN   GPIO_NUM_5
     #define B_PIN   GPIO_NUM_18
