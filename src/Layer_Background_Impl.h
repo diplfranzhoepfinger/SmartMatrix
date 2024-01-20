@@ -21,7 +21,8 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <stdlib.h>     
+#include <stdlib.h>
+#include "esp_task_wdt.h"
 
 // call when backgroundBuffers and backgroundColorCorrectionLUT buffer is allocated outside of class
 template <typename RGB, unsigned int optionFlags>
@@ -967,7 +968,11 @@ void SMLayerBackground<RGB, optionFlags>::swapBuffers(bool copy) {
     swapPending = true;
 
     if (copy) {
-        while (swapPending);
+        while (swapPending)
+        {
+            esp_task_wdt_reset();
+            delay(1);                                  //1ms delay
+        }
 #if 1
         // workaround for bizarre (optimization) bug - currentDrawBuffer and currentRefreshBuffer are volatile and are changed by an ISR while we're waiting for swapPending here.  They can't be used as parameters to memcpy directly though.  
         if(currentDrawBuffer)
